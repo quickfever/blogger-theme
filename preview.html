@@ -1,0 +1,1580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quickfever Theme Preview - Blogger / Blogspot</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    /* -------------------------------------------------------------
+       Quickfever Blogger Theme - Core Design System & CSS
+       ------------------------------------------------------------- */
+    :root {
+      --qf-primary: #e00613;
+      --qf-primary-hover: #c0040f;
+      --qf-header-bg: #000000;
+      --qf-header-color: #ffffff;
+      --qf-text-main: #111111;
+      --qf-text-muted: #666666;
+      --qf-text-light: #888888;
+      --qf-bg-body: #ffffff;
+      --qf-bg-alt: #f8fafc;
+      --qf-border: #e5e7eb;
+      --qf-border-light: #f1f5f9;
+      --qf-discover-bg: #eef3fc;
+      --qf-discover-border: #dbe7f6;
+      --qf-hero-bg: #fdd7d7;
+      --qf-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --qf-radius-sm: 4px;
+      --qf-radius-md: 6px;
+      --qf-radius-lg: 8px;
+      --qf-container-width: 1240px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--qf-font-sans);
+      background-color: var(--qf-bg-body);
+      color: var(--qf-text-main);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.15s ease, opacity 0.15s ease;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Demo Switcher Bar */
+    .demo-bar {
+      background: #111827;
+      color: #e2e8f0;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      border-bottom: 2px solid var(--qf-primary);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .demo-bar strong {
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .demo-badge {
+      background: var(--qf-primary);
+      color: #fff;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 3px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .demo-switch-btns {
+      display: flex;
+      gap: 10px;
+    }
+    .demo-btn {
+      background: #1f2937;
+      color: #cbd5e1;
+      border: 1px solid #374151;
+      padding: 6px 14px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12.5px;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .demo-btn.active, .demo-btn:hover {
+      background: var(--qf-primary);
+      border-color: var(--qf-primary);
+      color: #fff;
+    }
+
+    /* -------------------------------------------------------------
+       Header & Navigation
+       ------------------------------------------------------------- */
+    .qf-header {
+      background-color: var(--qf-header-bg);
+      color: var(--qf-header-color);
+      height: 56px;
+      position: relative;
+      z-index: 900;
+    }
+
+    .qf-header-inner {
+      max-width: var(--qf-container-width);
+      height: 100%;
+      margin: 0 auto;
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .qf-header-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .qf-hamburger-btn {
+      background: none;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px;
+      margin-left: -6px;
+    }
+    .qf-hamburger-btn svg {
+      width: 22px;
+      height: 22px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2.2;
+      stroke-linecap: round;
+    }
+
+    .qf-logo {
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: 1.2px;
+      color: #ffffff;
+      text-transform: uppercase;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Main Desktop Navigation */
+    .qf-nav {
+      display: flex;
+      align-items: center;
+      list-style: none;
+      gap: 22px;
+      margin-left: 20px;
+    }
+
+    .qf-nav > li {
+      position: relative;
+    }
+
+    .qf-nav > li > a {
+      color: #ffffff;
+      font-size: 13.5px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 6px 0;
+      white-space: nowrap;
+      opacity: 0.95;
+    }
+    .qf-nav > li > a:hover {
+      opacity: 1;
+    }
+
+    .qf-dropdown-icon {
+      width: 10px;
+      height: 10px;
+      fill: currentColor;
+      transition: transform 0.2s ease;
+    }
+
+    /* Dropdown Menu */
+    .qf-nav > li:hover .qf-dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .qf-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #111111;
+      min-width: 180px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+      border-radius: 4px;
+      padding: 8px 0;
+      list-style: none;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: all 0.2s ease;
+      z-index: 100;
+      border: 1px solid #222;
+    }
+    .qf-dropdown li a {
+      display: block;
+      padding: 8px 16px;
+      font-size: 13px;
+      color: #ddd;
+      font-weight: 500;
+    }
+    .qf-dropdown li a:hover {
+      background: #1a1a1a;
+      color: #fff;
+    }
+
+    /* Header Right Actions */
+    .qf-header-right {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .qf-search-btn {
+      background: none;
+      border: none;
+      color: #ffffff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px;
+      opacity: 0.9;
+      transition: opacity 0.2s;
+    }
+    .qf-search-btn:hover {
+      opacity: 1;
+    }
+    .qf-search-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .qf-btn-red {
+      background-color: var(--qf-primary);
+      color: #ffffff !important;
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 3px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+      transition: background-color 0.15s ease;
+    }
+    .qf-btn-red:hover {
+      background-color: var(--qf-primary-hover);
+    }
+
+    /* -------------------------------------------------------------
+       Shared UI Elements
+       ------------------------------------------------------------- */
+    .qf-main-wrap {
+      max-width: var(--qf-container-width);
+      margin: 0 auto;
+      padding: 24px 16px 60px;
+    }
+
+    .qf-section-title {
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--qf-text-muted);
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .qf-badge-red {
+      color: var(--qf-primary);
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      display: inline-block;
+      margin-bottom: 4px;
+    }
+    .qf-badge-red::before {
+      content: '> ';
+      font-weight: 900;
+    }
+
+    /* -------------------------------------------------------------
+       Homepage: Top APP DIRECTORY Section (Ranked 1 to 5)
+       ------------------------------------------------------------- */
+    .qf-app-directory {
+      margin-bottom: 40px;
+    }
+
+    .qf-rank-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
+
+    .qf-rank-card {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .qf-rank-thumb {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      background-color: #f1f3f5;
+      border-radius: var(--qf-radius-sm);
+      overflow: hidden;
+      margin-bottom: 10px;
+      border: 1px solid #ededed;
+    }
+    .qf-rank-thumb img, .qf-rank-thumb svg {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+    .qf-rank-card:hover .qf-rank-thumb img,
+    .qf-rank-card:hover .qf-rank-thumb svg {
+      transform: scale(1.03);
+    }
+
+    .qf-rank-info {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .qf-rank-num {
+      font-size: 32px;
+      font-weight: 900;
+      line-height: 1;
+      color: var(--qf-text-main);
+      min-width: 20px;
+      font-family: var(--qf-font-sans);
+    }
+
+    .qf-rank-meta {
+      flex: 1;
+    }
+
+    .qf-rank-title {
+      font-size: 13.5px;
+      font-weight: 700;
+      line-height: 1.35;
+      color: var(--qf-text-main);
+      margin-bottom: 4px;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .qf-rank-title a:hover {
+      color: var(--qf-primary);
+    }
+
+    .qf-rank-author {
+      font-size: 11px;
+      color: var(--qf-text-muted);
+    }
+    .qf-rank-author a {
+      text-decoration: underline;
+    }
+
+    /* -------------------------------------------------------------
+       Homepage: ARTICLES Section
+       ------------------------------------------------------------- */
+    .qf-articles-section {
+      margin-top: 32px;
+    }
+
+    .qf-articles-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+
+    /* Left Featured Article */
+    .qf-featured-left {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .qf-featured-thumb {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      background: #f1f3f5;
+      border-radius: var(--qf-radius-sm);
+      overflow: hidden;
+      margin-bottom: 14px;
+      border: 1px solid #ededed;
+    }
+    .qf-featured-thumb img, .qf-featured-thumb svg {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+    .qf-featured-left:hover .qf-featured-thumb img,
+    .qf-featured-left:hover .qf-featured-thumb svg {
+      transform: scale(1.02);
+    }
+
+    .qf-featured-title {
+      font-size: 26px;
+      font-weight: 800;
+      line-height: 1.25;
+      color: var(--qf-text-main);
+      margin: 6px 0 10px;
+    }
+    .qf-featured-title a:hover {
+      color: var(--qf-primary);
+    }
+
+    .qf-featured-snippet {
+      font-size: 14px;
+      color: var(--qf-text-muted);
+      line-height: 1.55;
+    }
+
+    /* Right 2x2 Grid Articles */
+    .qf-articles-subgrid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px 24px;
+    }
+
+    .qf-sub-card {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .qf-sub-thumb {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      background: #f1f3f5;
+      border-radius: var(--qf-radius-sm);
+      overflow: hidden;
+      margin-bottom: 10px;
+      border: 1px solid #ededed;
+    }
+    .qf-sub-thumb img, .qf-sub-thumb svg {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+    .qf-sub-card:hover .qf-sub-thumb img,
+    .qf-sub-card:hover .qf-sub-thumb svg {
+      transform: scale(1.03);
+    }
+
+    .qf-sub-title {
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.35;
+      color: var(--qf-text-main);
+      margin: 4px 0 6px;
+    }
+    .qf-sub-title a:hover {
+      color: var(--qf-primary);
+    }
+
+    .qf-sub-meta {
+      font-size: 11px;
+      color: var(--qf-text-muted);
+    }
+    .qf-sub-meta a {
+      text-decoration: underline;
+    }
+
+    /* -------------------------------------------------------------
+       Single Post Page (Dia Browser layout)
+       ------------------------------------------------------------- */
+    .qf-post-layout {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 48px;
+      align-items: start;
+    }
+
+    /* Post Main Content Column */
+    .qf-post-main {
+      min-width: 0;
+    }
+
+    .qf-post-header {
+      margin-bottom: 24px;
+    }
+
+    .qf-single-title {
+      font-size: 34px;
+      font-weight: 800;
+      line-height: 1.2;
+      color: var(--qf-text-main);
+      margin: 8px 0 12px;
+      letter-spacing: -0.3px;
+    }
+
+    .qf-single-deck {
+      font-size: 17px;
+      line-height: 1.5;
+      color: #3e3e3e;
+      margin-bottom: 16px;
+      font-weight: 400;
+    }
+
+    .qf-single-meta {
+      font-size: 12.5px;
+      color: var(--qf-text-muted);
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--qf-border);
+    }
+    .qf-single-meta a {
+      text-decoration: underline;
+      color: var(--qf-text-main);
+      font-weight: 500;
+    }
+
+    /* Hero Image Wrapper with pink/pastel container */
+    .qf-hero-box {
+      background-color: var(--qf-hero-bg);
+      border-radius: var(--qf-radius-sm);
+      padding: 32px 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 24px 0 32px;
+    }
+    .qf-hero-inner {
+      background: #ffffff;
+      border-radius: var(--qf-radius-sm);
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      max-width: 100%;
+      width: 100%;
+    }
+
+    /* Post Body Typography */
+    .qf-post-body {
+      font-size: 16.5px;
+      line-height: 1.75;
+      color: #222222;
+    }
+    .qf-post-body p {
+      margin-bottom: 20px;
+    }
+    .qf-post-body h2 {
+      font-size: 24px;
+      font-weight: 800;
+      margin: 36px 0 16px;
+      color: var(--qf-text-main);
+      line-height: 1.3;
+    }
+    .qf-post-body h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin: 28px 0 14px;
+      color: var(--qf-text-main);
+    }
+    .qf-post-body ul, .qf-post-body ol {
+      margin: 16px 0 24px 24px;
+    }
+    .qf-post-body li {
+      margin-bottom: 8px;
+    }
+    .qf-post-body blockquote {
+      border-left: 3px solid var(--qf-primary);
+      padding: 12px 20px;
+      margin: 24px 0;
+      background: #fafafa;
+      font-style: italic;
+      color: #444;
+    }
+    .qf-post-body pre {
+      background: #111827;
+      color: #f3f4f6;
+      padding: 16px;
+      border-radius: 6px;
+      overflow-x: auto;
+      font-size: 13.5px;
+      margin: 24px 0;
+    }
+
+    /* -------------------------------------------------------------
+       Sidebar
+       ------------------------------------------------------------- */
+    .qf-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    /* Discover More Widget */
+    .qf-widget-discover {
+      background: #ffffff;
+      border: 1px solid var(--qf-discover-border);
+      border-radius: var(--qf-radius-sm);
+      overflow: hidden;
+    }
+
+    .qf-discover-head {
+      background-color: var(--qf-discover-bg);
+      padding: 12px 18px;
+      font-size: 14.5px;
+      font-weight: 700;
+      color: #1e293b;
+      border-bottom: 1px solid var(--qf-discover-border);
+    }
+
+    .qf-discover-list {
+      list-style: none;
+    }
+
+    .qf-discover-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 11px 18px;
+      font-size: 13.5px;
+      font-weight: 500;
+      color: #334155;
+      border-bottom: 1px solid #f1f5f9;
+      transition: all 0.15s ease;
+    }
+    .qf-discover-item:last-child {
+      border-bottom: none;
+    }
+    .qf-discover-item:hover {
+      background-color: #f8fafc;
+      color: var(--qf-primary);
+      padding-left: 21px;
+    }
+    .qf-chevron-icon {
+      width: 14px;
+      height: 14px;
+      fill: none;
+      stroke: #94a3b8;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: stroke 0.15s, transform 0.15s;
+    }
+    .qf-discover-item:hover .qf-chevron-icon {
+      stroke: var(--qf-primary);
+      transform: translateX(2px);
+    }
+
+    /* Sidebar Section: Top News */
+    .qf-widget-topnews {
+      margin-top: 8px;
+    }
+    .qf-widget-title {
+      font-size: 13.5px;
+      font-weight: 800;
+      color: var(--qf-text-main);
+      margin-bottom: 14px;
+    }
+    .qf-news-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .qf-news-item {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .qf-news-thumb {
+      width: 70px;
+      height: 50px;
+      flex-shrink: 0;
+      border-radius: 3px;
+      overflow: hidden;
+      background: #f1f3f5;
+    }
+    .qf-news-thumb img, .qf-news-thumb svg {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .qf-news-title {
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.35;
+      color: #111;
+    }
+    .qf-news-title a:hover {
+      color: var(--qf-primary);
+    }
+
+    /* -------------------------------------------------------------
+       Footer
+       ------------------------------------------------------------- */
+    .qf-footer {
+      background: #111111;
+      color: #999999;
+      font-size: 13px;
+      padding: 40px 16px 24px;
+      margin-top: 60px;
+      border-top: 1px solid #222;
+    }
+    .qf-footer-inner {
+      max-width: var(--qf-container-width);
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      text-align: center;
+    }
+    .qf-footer-logo {
+      font-size: 20px;
+      font-weight: 900;
+      color: #ffffff;
+      letter-spacing: 1px;
+    }
+    .qf-footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      list-style: none;
+    }
+    .qf-footer-links a {
+      color: #bbb;
+    }
+    .qf-footer-links a:hover {
+      color: #fff;
+    }
+    .qf-footer-copy {
+      color: #666;
+      font-size: 12px;
+    }
+
+    /* -------------------------------------------------------------
+       Mobile Off-canvas Drawer & Overlay
+       ------------------------------------------------------------- */
+    .qf-drawer-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 1100;
+    }
+    .qf-drawer-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .qf-drawer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 290px;
+      background: #111111;
+      color: #fff;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+      z-index: 1200;
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 4px 0 24px rgba(0,0,0,0.4);
+    }
+    .qf-drawer.active {
+      transform: translateX(0);
+    }
+
+    .qf-drawer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #222;
+    }
+    .qf-drawer-close {
+      background: none;
+      border: none;
+      color: #aaa;
+      cursor: pointer;
+      font-size: 20px;
+      padding: 4px;
+    }
+    .qf-drawer-close:hover {
+      color: #fff;
+    }
+
+    .qf-drawer-nav {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .qf-drawer-nav a {
+      font-size: 15px;
+      font-weight: 600;
+      color: #eee;
+      display: block;
+      padding: 8px 0;
+    }
+    .qf-drawer-nav a:hover {
+      color: var(--qf-primary);
+    }
+
+    /* Search Modal */
+    .qf-search-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 100px;
+      z-index: 1300;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.2s ease;
+    }
+    .qf-search-modal.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    .qf-search-box {
+      background: #ffffff;
+      width: 100%;
+      max-width: 600px;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+      position: relative;
+    }
+    .qf-search-input-wrap {
+      display: flex;
+      gap: 10px;
+    }
+    .qf-search-input {
+      flex: 1;
+      padding: 12px 16px;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      font-size: 15px;
+      outline: none;
+    }
+    .qf-search-input:focus {
+      border-color: var(--qf-primary);
+    }
+
+    /* -------------------------------------------------------------
+       Responsive Breakpoints
+       ------------------------------------------------------------- */
+    @media (max-width: 1080px) {
+      .qf-nav {
+        gap: 14px;
+        margin-left: 14px;
+      }
+      .qf-nav > li > a {
+        font-size: 12.5px;
+      }
+      .qf-rank-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .qf-post-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 860px) {
+      .qf-nav {
+        display: none;
+      }
+      .qf-articles-grid {
+        grid-template-columns: 1fr;
+      }
+      .qf-rank-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 580px) {
+      .qf-rank-grid {
+        grid-template-columns: 1fr;
+      }
+      .qf-articles-subgrid {
+        grid-template-columns: 1fr;
+      }
+      .qf-single-title {
+        font-size: 26px;
+      }
+      .qf-single-deck {
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Demo View Switcher Toolbar -->
+  <aside class="demo-bar" aria-label="Theme Preview Controls">
+    <strong>
+      <span class="demo-badge">QUICKFEVER THEME</span>
+      Interactive Preview Mode
+    </strong>
+    <div class="demo-switch-btns">
+      <button class="demo-btn active" id="btnShowHome" onclick="switchView('home')">1. Homepage View (Image 2)</button>
+      <button class="demo-btn" id="btnShowPost" onclick="switchView('post')">2. Single Post View (Image 1)</button>
+    </div>
+  </aside>
+
+  <!-- ==================== HEADER (Identical across both views) ==================== -->
+  <header class="qf-header">
+    <div class="qf-header-inner">
+      <div class="qf-header-left">
+        <!-- Hamburger Menu Button -->
+        <button class="qf-hamburger-btn" onclick="toggleDrawer()" aria-label="Toggle navigation menu">
+          <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" /></svg>
+        </button>
+
+        <!-- Brand Title -->
+        <a href="#home" onclick="switchView('home'); return false;" class="qf-logo">QUICKFEVER</a>
+
+        <!-- Desktop Navigation Bar -->
+        <nav>
+          <ul class="qf-nav">
+            <li><a href="#alternative-os">Alternative OS</a></li>
+            <li><a href="#apps-software">Apps &amp; Software</a></li>
+            <li><a href="#how-to-guides">How-To Guides</a></li>
+            <li><a href="#internet-cloud">Internet &amp; Cloud</a></li>
+            <li>
+              <a href="#windows">
+                Windows
+                <svg class="qf-dropdown-icon" viewBox="0 0 10 6">
+                  <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+              <ul class="qf-dropdown">
+                <li><a href="#win11">Windows 11</a></li>
+                <li><a href="#win10">Windows 10</a></li>
+                <li><a href="#win-tips">Tips &amp; Tricks</a></li>
+                <li><a href="#win-software">Essential Software</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Header Right: Search + Red Instagram Button -->
+      <div class="qf-header-right">
+        <button class="qf-search-btn" onclick="toggleSearch()" aria-label="Search articles">
+          <svg viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="7" />
+            <line x1="16.5" y1="16.5" x2="22" y2="22" />
+          </svg>
+        </button>
+        <a href="https://instagram.com" target="_blank" rel="noopener" class="qf-btn-red">Instagram</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== VIEW 1: HOMEPAGE (Screenshot 2) ==================== -->
+  <main id="view-home" class="qf-main-wrap">
+    
+    <!-- SECTION 1: APP DIRECTORY (Ranked 1 to 5) -->
+    <section class="qf-app-directory">
+      <h2 class="qf-section-title">APP DIRECTORY</h2>
+      <div class="qf-rank-grid">
+        
+        <!-- Rank Item 1 -->
+        <article class="qf-rank-card">
+          <div class="qf-rank-thumb" style="background:#ffdada; padding: 6px;">
+            <!-- Dia browser mockup SVG -->
+            <svg viewBox="0 0 240 150" style="width:100%;height:100%;border-radius:4px;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+              <rect width="240" height="150" fill="#ffffff" rx="4"/>
+              <rect width="240" height="16" fill="#f3f4f6"/>
+              <circle cx="10" cy="8" r="3" fill="#ef4444"/>
+              <circle cx="18" cy="8" r="3" fill="#f59e0b"/>
+              <circle cx="26" cy="8" r="3" fill="#10b981"/>
+              <rect x="42" y="4" width="130" height="8" rx="2" fill="#e5e7eb"/>
+              <text x="120" y="55" font-family="sans-serif" font-weight="800" font-size="9" fill="#111" text-anchor="middle">Sharper focus, synced</text>
+              <text x="120" y="68" font-family="sans-serif" font-weight="800" font-size="9" fill="#111" text-anchor="middle">everywhere</text>
+              <rect x="75" y="80" width="90" height="6" rx="3" fill="#3b82f6"/>
+              <rect x="30" y="105" width="80" height="18" rx="2" fill="#f9fafb" stroke="#e5e7eb"/>
+              <rect x="130" y="105" width="80" height="18" rx="2" fill="#f9fafb" stroke="#e5e7eb"/>
+            </svg>
+          </div>
+          <span class="qf-badge-red">APPS &amp; SOFTWARE</span>
+          <div class="qf-rank-info">
+            <span class="qf-rank-num">1</span>
+            <div class="qf-rank-meta">
+              <h3 class="qf-rank-title">
+                <a href="#post" onclick="switchView('post'); return false;">Dia Browser Guide: Features, AI Tools, and What Happens to Arc</a>
+              </h3>
+              <div class="qf-rank-author">by <a href="#author">Dev Mimrot</a></div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Rank Item 2 -->
+        <article class="qf-rank-card">
+          <div class="qf-rank-thumb">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&q=80" alt="DNS Servers" />
+          </div>
+          <span class="qf-badge-red">BEST PICKS INTERNET &amp; CLOUD</span>
+          <div class="qf-rank-info">
+            <span class="qf-rank-num">2</span>
+            <div class="qf-rank-meta">
+              <h3 class="qf-rank-title">
+                <a href="#dns-post">Best Free and Public DNS Servers List (Windows 11, Mac &amp; Android)</a>
+              </h3>
+              <div class="qf-rank-author">by <a href="#author">Dev Mimrot</a></div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Rank Item 3 -->
+        <article class="qf-rank-card">
+          <div class="qf-rank-thumb">
+            <!-- Firefox update tracker mockup SVG -->
+            <svg viewBox="0 0 240 150" style="width:100%;height:100%;">
+              <rect width="240" height="150" fill="#f8fafc"/>
+              <rect x="20" y="25" width="80" height="12" rx="2" fill="#e2e8f0"/>
+              <rect x="20" y="45" width="60" height="16" rx="3" fill="#3b82f6"/>
+              <rect x="120" y="20" width="100" height="100" rx="6" fill="#ffffff" stroke="#e2e8f0"/>
+              <circle cx="170" cy="55" r="16" fill="#ff7a00"/>
+              <rect x="140" y="80" width="60" height="8" rx="2" fill="#cbd5e1"/>
+            </svg>
+          </div>
+          <span class="qf-badge-red">DOWNLOADS</span>
+          <div class="qf-rank-info">
+            <span class="qf-rank-num">3</span>
+            <div class="qf-rank-meta">
+              <h3 class="qf-rank-title">
+                <a href="#firefox-post">Mozilla Firefox update tracker and offline download link</a>
+              </h3>
+              <div class="qf-rank-author">by <a href="#author">Dev Mimrot</a></div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Rank Item 4 -->
+        <article class="qf-rank-card">
+          <div class="qf-rank-thumb" style="display:flex;align-items:center;justify-content:center;background:#ffffff;">
+            <!-- Xiaomi logo mockup -->
+            <svg viewBox="0 0 100 100" style="width:60px;height:60px;">
+              <rect width="100" height="100" rx="24" fill="#ff6900"/>
+              <path d="M28 32 h12 v24 h16 v-24 h12 v36 h-12 v-16 h-8 v16 h-20 z" fill="#ffffff"/>
+            </svg>
+          </div>
+          <span class="qf-badge-red">DOWNLOADS INTERNET &amp; CLOUD</span>
+          <div class="qf-rank-info">
+            <span class="qf-rank-num">4</span>
+            <div class="qf-rank-meta">
+              <h3 class="qf-rank-title">
+                <a href="#mi-drivers">Download Mi Notebook Ultra &amp; Pro Drivers (Windows 11/10)</a>
+              </h3>
+              <div class="qf-rank-author">by <a href="#author">Dev Mimrot</a></div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Rank Item 5 -->
+        <article class="qf-rank-card">
+          <div class="qf-rank-thumb">
+            <!-- VPN on laptop mockup SVG -->
+            <svg viewBox="0 0 240 150" style="width:100%;height:100%;">
+              <rect width="240" height="150" fill="#1e293b"/>
+              <rect x="35" y="20" width="170" height="105" rx="4" fill="#0f172a" stroke="#334155"/>
+              <rect x="45" y="28" width="150" height="85" fill="#0284c7"/>
+              <path d="M120 45 L135 55 V80 L120 90 L105 80 V55 Z" fill="#ffffff"/>
+              <path d="M120 52 L130 58 V75 L120 82 L110 75 V58 Z" fill="#0284c7"/>
+            </svg>
+          </div>
+          <span class="qf-badge-red">APPS &amp; SOFTWARE REVIEWS</span>
+          <div class="qf-rank-info">
+            <span class="qf-rank-num">5</span>
+            <div class="qf-rank-meta">
+              <h3 class="qf-rank-title">
+                <a href="#vpns">5 free and Reliable VPNs for Windows 11</a>
+              </h3>
+              <div class="qf-rank-author">by <a href="#author">Dev Mimrot</a></div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- SECTION 2: ARTICLES (Featured Left + 2x2 Grid Right) -->
+    <section class="qf-articles-section">
+      <h2 class="qf-section-title">ARTICLES</h2>
+      <div class="qf-articles-grid">
+        
+        <!-- Left Side: Large Featured Article -->
+        <div class="qf-featured-left">
+          <article>
+            <div class="qf-featured-thumb" style="background:#fcd34d;">
+              <!-- Authentic illustration matching Screenshot 2: girl with laptop, plant, goldfish -->
+              <svg viewBox="0 0 500 300" style="width:100%;height:100%;">
+                <rect width="500" height="300" fill="#fcd34d"/>
+                <!-- Clock on wall -->
+                <circle cx="110" cy="90" r="28" fill="#ffffff"/>
+                <circle cx="110" cy="90" r="2" fill="#111827"/>
+                <line x1="110" y1="90" x2="110" y2="72" stroke="#111827" stroke-width="2.5" stroke-linecap="round"/>
+                <line x1="110" y1="90" x2="122" y2="90" stroke="#111827" stroke-width="2.5" stroke-linecap="round"/>
+
+                <!-- Potted Plant on left -->
+                <path d="M75 255 L85 195 L115 195 L125 255 Z" fill="#e11d48"/>
+                <circle cx="95" cy="180" r="14" fill="#059669"/>
+                <circle cx="108" cy="165" r="14" fill="#059669"/>
+                <circle cx="90" cy="150" r="14" fill="#059669"/>
+                <circle cx="105" cy="135" r="14" fill="#059669"/>
+                <circle cx="95" cy="120" r="14" fill="#059669"/>
+
+                <!-- Girl character -->
+                <circle cx="310" cy="180" r="50" fill="#fed7aa"/>
+                <!-- Hair -->
+                <path d="M260 170 C260 115 360 115 360 170 C360 200 345 220 335 230 C335 230 325 220 325 200 C325 180 295 180 295 200 C295 220 285 230 285 230 C275 220 260 200 260 170 Z" fill="#e11d48"/>
+                <!-- Eyes & Smile -->
+                <circle cx="295" cy="175" r="4" fill="#111827"/>
+                <circle cx="325" cy="175" r="4" fill="#111827"/>
+                <path d="M302 190 Q310 198 318 190" stroke="#111827" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+
+                <!-- Girl body / shirt -->
+                <path d="M250 250 L275 220 L345 220 L370 250 Z" fill="#ffffff"/>
+
+                <!-- Laptop with Android robot -->
+                <rect x="270" y="230" width="80" height="50" rx="4" fill="#ffffff" stroke="#e5e7eb" stroke-width="2"/>
+                <circle cx="310" cy="252" r="9" fill="#10b981"/>
+                <rect x="303" y="254" width="14" height="12" rx="2" fill="#10b981"/>
+
+                <!-- Goldfish bowl -->
+                <circle cx="400" cy="190" r="32" fill="#bae6fd" opacity="0.8"/>
+                <ellipse cx="400" cy="165" rx="24" ry="7" fill="#ffffff" opacity="0.6"/>
+                <!-- Fish -->
+                <ellipse cx="402" cy="192" rx="9" ry="5" fill="#f97316"/>
+                <polygon points="410,192 418,186 418,198" fill="#f97316"/>
+
+                <!-- Stack of books -->
+                <rect x="410" y="235" width="45" height="10" rx="1" fill="#3b82f6"/>
+                <rect x="415" y="245" width="42" height="10" rx="1" fill="#10b981"/>
+
+                <!-- Tea cup -->
+                <path d="M375 240 L380 255 L395 255 L400 240 Z" fill="#ffffff"/>
+
+                <!-- Desk bar -->
+                <rect x="0" y="255" width="500" height="45" fill="#fcd34d"/>
+                <line x1="0" y1="255" x2="500" y2="255" stroke="#f59e0b" stroke-width="3"/>
+
+                <!-- Brand watermark -->
+                <text x="100" y="280" font-family="sans-serif" font-weight="900" font-size="16" fill="#111827" opacity="0.85">QUICKFEVER</text>
+              </svg>
+            </div>
+            <span class="qf-badge-red">ALTERNATIVE OS COMPUTING</span>
+            <h3 class="qf-featured-title">
+              <a href="#android-os">12 Best Android OS for PC 2026 Edition</a>
+            </h3>
+            <p class="qf-featured-snippet">
+              Do you want to run Android OS on your PC? Whether you need it for testing apps, playing Android mobile games on a larger display, or breathing new life into an older computer, here are the top picks tested in 2026.
+            </p>
+          </article>
+        </div>
+
+        <!-- Right Side: 2x2 Subgrid -->
+        <div class="qf-articles-subgrid">
+          
+          <!-- Subgrid Post 1 -->
+          <article class="qf-sub-card">
+            <div class="qf-sub-thumb" style="background:#0a0a0a;">
+              <!-- Command prompt on Windows 11 mockup SVG -->
+              <svg viewBox="0 0 240 150" style="width:100%;height:100%;">
+                <rect width="240" height="150" fill="#0f172a"/>
+                <rect width="240" height="16" fill="#1e293b"/>
+                <text x="10" y="11" font-family="monospace" font-size="7" fill="#94a3b8">Administrator: Command Prompt</text>
+                <text x="12" y="36" font-family="monospace" font-size="8" fill="#22c55e">Microsoft Windows [Version 10.0.22631]</text>
+                <text x="12" y="50" font-family="monospace" font-size="8" fill="#cbd5e1">(c) Microsoft Corporation. All rights reserved.</text>
+                <text x="12" y="70" font-family="monospace" font-size="9" fill="#f8fafc">C:\Windows\System32&gt; _</text>
+                <!-- Context menu popup overlay -->
+                <rect x="70" y="35" width="85" height="75" rx="4" fill="#18181b" stroke="#3f3f46" stroke-width="1.5"/>
+                <rect x="76" y="44" width="73" height="12" rx="2" fill="#27272a"/>
+                <text x="82" y="53" font-family="sans-serif" font-size="7" fill="#ffffff">Pin to taskbar</text>
+                <text x="82" y="70" font-family="sans-serif" font-size="7" fill="#a1a1aa">Run as administrator</text>
+                <text x="82" y="86" font-family="sans-serif" font-size="7" fill="#a1a1aa">Open file location</text>
+                <text x="82" y="102" font-family="sans-serif" font-size="7" fill="#ef4444">Uninstall</text>
+              </svg>
+            </div>
+            <span class="qf-badge-red">COMPUTING HOW-TO GUIDES WINDOWS</span>
+            <h4 class="qf-sub-title">
+              <a href="#cmd-pin">How to Pin Command Prompt to Windows 11 Taskbar (And Fix PowerShell Opening)</a>
+            </h4>
+            <div class="qf-sub-meta">by <a href="#author">Dev Mimrot</a> &bull; November 11, 2026</div>
+          </article>
+
+          <!-- Subgrid Post 2 -->
+          <article class="qf-sub-card">
+            <div class="qf-sub-thumb" style="background:#0f172a;">
+              <!-- Sunshine & Moonlight game streaming app UI SVG -->
+              <svg viewBox="0 0 240 150" style="width:100%;height:100%;">
+                <rect width="240" height="150" fill="#f8fafc"/>
+                <rect width="240" height="22" fill="#0284c7"/>
+                <text x="12" y="15" font-family="sans-serif" font-weight="700" font-size="8" fill="#ffffff">Applications (2)</text>
+                <rect x="25" y="45" width="80" height="80" rx="6" fill="#1e293b"/>
+                <text x="65" y="85" font-family="sans-serif" font-weight="900" font-size="20" fill="#38bdf8" text-anchor="middle">&#128187;</text>
+                <text x="65" y="112" font-family="sans-serif" font-weight="700" font-size="8" fill="#ffffff" text-anchor="middle">Desktop</text>
+                <rect x="135" y="45" width="80" height="80" rx="6" fill="#1e293b"/>
+                <circle cx="175" cy="80" r="14" fill="#0284c7"/>
+                <text x="175" y="112" font-family="sans-serif" font-weight="700" font-size="8" fill="#ffffff" text-anchor="middle">Steam Big Picture</text>
+              </svg>
+            </div>
+            <span class="qf-badge-red">GAMING HOW-TO GUIDES</span>
+            <h4 class="qf-sub-title">
+              <a href="#sunshine-moonlight">How to Stream PC Games to Android TV Using Sunshine and Moonlight</a>
+            </h4>
+            <div class="qf-sub-meta">by <a href="#author">Dev Mimrot</a> &bull; November 16, 2026</div>
+          </article>
+
+          <!-- Subgrid Post 3 -->
+          <article class="qf-sub-card">
+            <span class="qf-badge-red">ANDROID HOW-TO GUIDES</span>
+            <h4 class="qf-sub-title">
+              <a href="#debloat-tv">How to Debloat Your Android TV Using Antigravity (CleanYourTV Guide)</a>
+            </h4>
+            <div class="qf-sub-meta">by <a href="#author">Dev Mimrot</a> &bull; November 8, 2026</div>
+          </article>
+
+          <!-- Subgrid Post 4 -->
+          <article class="qf-sub-card">
+            <span class="qf-badge-red">COMPUTING DOWNLOADS &amp; ISOS WINDOWS</span>
+            <h4 class="qf-sub-title">
+              <a href="#win11-iso">Windows 11 Insider Preview 29708 ISO Download 27H2 Including Updates</a>
+            </h4>
+            <div class="qf-sub-meta">by <a href="#author">Dev Mimrot</a> &bull; November 17, 2026</div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== VIEW 2: SINGLE POST (Screenshot 1) ==================== -->
+  <main id="view-post" class="qf-main-wrap" style="display:none;">
+    <div class="qf-post-layout">
+      
+      <!-- Left Column: Article Content -->
+      <article class="qf-post-main">
+        <header class="qf-post-header">
+          <div class="qf-badge-red">APPS &amp; SOFTWARE</div>
+          <h1 class="qf-single-title">Dia Browser Guide: Features, AI Tools, and What Happens to Arc</h1>
+          <p class="qf-single-deck">
+            A practical guide to Dia Browser by The Browser Company. Learn how its multi-tab AI reasoning, Morning Brief, and Arc migration wizard work.
+          </p>
+          <div class="qf-single-meta">
+            by <a href="#author">Dev Mimrot</a> &#160; November 13, 2026
+          </div>
+        </header>
+
+        <!-- Hero image with light pink/pastel wrapper matching screenshot -->
+        <div class="qf-hero-box">
+          <div class="qf-hero-inner">
+            <!-- Authentic Dia browser window inside the pink container -->
+            <svg viewBox="0 0 800 480" style="width:100%;height:auto;display:block;">
+              <rect width="800" height="480" fill="#ffffff"/>
+              <!-- Browser Header / Chrome bar -->
+              <rect width="800" height="38" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+              <circle cx="20" cy="19" r="5" fill="#ef4444"/>
+              <circle cx="34" cy="19" r="5" fill="#f59e0b"/>
+              <circle cx="48" cy="19" r="5" fill="#10b981"/>
+              <!-- URL bar -->
+              <rect x="75" y="8" width="560" height="22" rx="4" fill="#ffffff" stroke="#cbd5e1"/>
+              <text x="90" y="23" font-family="sans-serif" font-size="10" fill="#64748b">diabrowser.com - Dia Browser Gallery | Dia for Windows</text>
+              <rect x="710" y="8" width="60" height="22" rx="4" fill="#0284c7"/>
+              <text x="740" y="22" font-family="sans-serif" font-weight="700" font-size="9" fill="#ffffff" text-anchor="middle">Get Dia</text>
+
+              <!-- Inner page content -->
+              <rect x="320" y="65" width="160" height="26" rx="13" fill="#0f172a"/>
+              <text x="400" y="82" font-family="sans-serif" font-size="10" font-weight="600" fill="#ffffff" text-anchor="middle">What's New &#8226; Apps &#8226; Security</text>
+
+              <text x="400" y="145" font-family="sans-serif" font-weight="800" font-size="28" fill="#111827" text-anchor="middle">Sharper focus, synced everywhere</text>
+              <rect x="365" y="165" width="70" height="18" rx="4" fill="#38bdf8"/>
+              <text x="400" y="177" font-family="sans-serif" font-size="9" font-weight="800" fill="#0f172a" text-anchor="middle">ALL NEW v1.1.0</text>
+
+              <text x="400" y="215" font-family="sans-serif" font-size="13" fill="#64748b" text-anchor="middle">Dia 1.1.0 for Windows brings Focus Mode, sync with your Mac workspace setup, and a refreshed look.</text>
+
+              <!-- Feature columns -->
+              <rect x="100" y="250" width="280" height="85" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+              <text x="115" y="275" font-family="sans-serif" font-weight="800" font-size="13" fill="#111827">Refreshed Dia Branding</text>
+              <text x="115" y="295" font-family="sans-serif" font-size="10" fill="#64748b">Updates to street-tag new tabs artwork, compact tabs dialogs, and</text>
+              <text x="115" y="310" font-family="sans-serif" font-size="10" fill="#64748b">the app-icon as Dia's new tab.</text>
+
+              <rect x="420" y="250" width="280" height="85" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+              <text x="435" y="275" font-family="sans-serif" font-weight="800" font-size="13" fill="#111827">Focus Mode</text>
+              <text x="435" y="295" font-family="sans-serif" font-size="10" fill="#64748b">Hides the address or top tabs to give pages a clean view, showing</text>
+              <text x="435" y="310" font-family="sans-serif" font-size="10" fill="#64748b">controls on hover and working with split view.</text>
+
+              <!-- Row 2 -->
+              <rect x="100" y="355" width="280" height="85" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+              <text x="115" y="380" font-family="sans-serif" font-weight="800" font-size="13" fill="#111827">Dia Sync for Windows</text>
+              <text x="115" y="400" font-family="sans-serif" font-size="10" fill="#64748b">Syncs Dia between Windows and Mac and merges matching</text>
+              <text x="115" y="415" font-family="sans-serif" font-size="10" fill="#64748b">profiles on your browsing stays connected across computers.</text>
+
+              <rect x="420" y="355" width="280" height="85" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+              <text x="435" y="380" font-family="sans-serif" font-weight="800" font-size="13" fill="#111827">Faster Chat Starts</text>
+              <text x="435" y="400" font-family="sans-serif" font-size="10" fill="#64748b">Primary tab leads to tools on Dial can use from right away</text>
+              <text x="435" y="415" font-family="sans-serif" font-size="10" fill="#64748b">and start a morning session.</text>
+            </svg>
+          </div>
+        </div>
+
+        <div class="qf-post-body">
+          <p>
+            The Browser Company has officially unveiled Dia, their next-generation AI-first web browser designed to fundamentally rethink how we interact with information online. While Arc revolutionized tab management with spaces, pinned tabs, and vertical sidebars, Dia pivots toward proactive machine intelligence.
+          </p>
+
+          <h2>Multi-Tab AI Reasoning</h2>
+          <p>
+            Unlike traditional browser extensions that summarize an individual active page, Dia can synthesize intelligence across 10 or 20 background tabs at once. If you are researching flight tickets, hotel options, or technical API docs, Dia creates a unified synthesis table without manual copying.
+          </p>
+
+          <blockquote>
+            "Dia is not just a browser with a chatbot taped onto the sidebar. It is built from the ground up so the AI understands your ongoing tasks."
+          </blockquote>
+
+          <h2>The Morning Brief &amp; Migration From Arc</h2>
+          <p>
+            For millions of existing Arc users, the pressing question is continuity. The Browser Company provides an automated Migration Wizard that ports your Spaces, Pinned Tabs, and Profiles seamlessly into Dia.
+          </p>
+          <ul>
+            <li><strong>Spaces to Channels:</strong> Your favorite spaces convert into reactive channels.</li>
+            <li><strong>Morning Brief:</strong> A quick digest summarizing newly updated tabs while you slept.</li>
+            <li><strong>Keyboard shortcuts:</strong> Fully compatible with Arc's command palette.</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Right Column: Sidebar (Discover more widget & Top News) -->
+      <aside class="qf-sidebar">
+        
+        <!-- Discover More Widget (Exact Match with Image 1) -->
+        <div class="qf-widget-discover">
+          <div class="qf-discover-head">Discover more</div>
+          <ul class="qf-discover-list">
+            <li>
+              <a href="#compare-browsers" class="qf-discover-item">
+                <span>Compare Browsers</span>
+                <svg class="qf-chevron-icon" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+              </a>
+            </li>
+            <li>
+              <a href="#web-browsers" class="qf-discover-item">
+                <span>web browsers</span>
+                <svg class="qf-chevron-icon" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+              </a>
+            </li>
+            <li>
+              <a href="#compare-software" class="qf-discover-item">
+                <span>Compare Software</span>
+                <svg class="qf-chevron-icon" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+              </a>
+            </li>
+            <li>
+              <a href="#tech-news" class="qf-discover-item">
+                <span>Read Tech News</span>
+                <svg class="qf-chevron-icon" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+              </a>
+            </li>
+            <li>
+              <a href="#company-news" class="qf-discover-item">
+                <span>Read Company News</span>
+                <svg class="qf-chevron-icon" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+              </a>
+            </li>
+            <li>
+              <a href="#ai-tools" class="qf-discover-item">
+                <span>Learn AI Tools</span>
+                <svg class="qf-chevron-icon" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+              </a>
+            </li>
+            <li>
+              <a href="#software" class="qf-discover-item">
+                <span>Software</span>
+                <svg class="qf-chevron-icon" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+              </a>
+            </li>
+            <li>
+              <a href="#cloud-tools" class="qf-discover-item">
+                <span>Try Cloud Tools</span>
+                <svg class="qf-chevron-icon" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Top News Sidebar Widget -->
+        <div class="qf-widget-topnews">
+          <div class="qf-widget-title">Top News</div>
+          <ul class="qf-news-list">
+            <li class="qf-news-item">
+              <div class="qf-news-thumb">
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=120&q=80" alt="News 1" />
+              </div>
+              <div class="qf-news-title">
+                <a href="#news1">Best Free and Public DNS Servers List (2026 Updated)</a>
+              </div>
+            </li>
+            <li class="qf-news-item">
+              <div class="qf-news-thumb" style="background:#111;display:flex;align-items:center;justify-content:center;">
+                <span style="color:#22c55e;font-family:monospace;font-size:11px;">C:\&gt;</span>
+              </div>
+              <div class="qf-news-title">
+                <a href="#news2">How to Pin Command Prompt to Windows 11 Taskbar</a>
+              </div>
+            </li>
+            <li class="qf-news-item">
+              <div class="qf-news-thumb" style="background:#0284c7;display:flex;align-items:center;justify-content:center;">
+                <span style="color:#fff;font-size:12px;font-weight:900;">VPN</span>
+              </div>
+              <div class="qf-news-title">
+                <a href="#news3">Top 5 Secure VPNs for Windows 11 Power Users</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+      </aside>
+    </div>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="qf-footer">
+    <div class="qf-footer-inner">
+      <div class="qf-footer-logo">QUICKFEVER</div>
+      <ul class="qf-footer-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#privacy">Privacy Policy</a></li>
+        <li><a href="#terms">Terms of Service</a></li>
+        <li><a href="#sitemap">Sitemap</a></li>
+      </ul>
+      <div class="qf-footer-copy">
+        &copy; 2026 QUICKFEVER. All rights reserved. Powered by Blogger.
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== MOBILE DRAWER & SEARCH POPUP ==================== -->
+  <div class="qf-drawer-overlay" id="drawerOverlay" onclick="toggleDrawer()"></div>
+  <aside class="qf-drawer" id="mobileDrawer" aria-label="Mobile Navigation">
+    <div class="qf-drawer-header">
+      <div class="qf-logo">QUICKFEVER</div>
+      <button class="qf-drawer-close" onclick="toggleDrawer()" aria-label="Close menu">&times;</button>
+    </div>
+    <ul class="qf-drawer-nav">
+      <li><a href="#home" onclick="toggleDrawer(); switchView('home')">Home</a></li>
+      <li><a href="#alternative-os" onclick="toggleDrawer()">Alternative OS</a></li>
+      <li><a href="#apps-software" onclick="toggleDrawer()">Apps &amp; Software</a></li>
+      <li><a href="#how-to-guides" onclick="toggleDrawer()">How-To Guides</a></li>
+      <li><a href="#internet-cloud" onclick="toggleDrawer()">Internet &amp; Cloud</a></li>
+      <li><a href="#windows" onclick="toggleDrawer()">Windows 11 / 10</a></li>
+    </ul>
+    <div style="margin-top:auto; padding-top:20px;">
+      <a href="https://instagram.com" target="_blank" rel="noopener" class="qf-btn-red" style="width:100%; text-align:center;">Follow on Instagram</a>
+    </div>
+  </aside>
+
+  <!-- Search Modal -->
+  <div class="qf-search-modal" id="searchModal" onclick="if(event.target===this) toggleSearch()">
+    <div class="qf-search-box">
+      <div class="qf-search-input-wrap">
+        <input type="text" class="qf-search-input" placeholder="Search guides, tools, OS, downloads..." id="searchField" />
+        <button class="qf-btn-red" style="padding: 10px 18px;" onclick="doSearch()">Search</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive JavaScript -->
+  <script>
+    function switchView(view) {
+      const homeView = document.getElementById('view-home');
+      const postView = document.getElementById('view-post');
+      const btnHome = document.getElementById('btnShowHome');
+      const btnPost = document.getElementById('btnShowPost');
+
+      if (view === 'home') {
+        homeView.style.display = 'block';
+        postView.style.display = 'none';
+        btnHome.classList.add('active');
+        btnPost.classList.remove('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        homeView.style.display = 'none';
+        postView.style.display = 'block';
+        btnPost.classList.add('active');
+        btnHome.classList.remove('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
+    function toggleDrawer() {
+      const drawer = document.getElementById('mobileDrawer');
+      const overlay = document.getElementById('drawerOverlay');
+      drawer.classList.toggle('active');
+      overlay.classList.toggle('active');
+    }
+
+    function toggleSearch() {
+      const modal = document.getElementById('searchModal');
+      modal.classList.toggle('active');
+      if (modal.classList.contains('active')) {
+        setTimeout(() => document.getElementById('searchField').focus(), 100);
+      }
+    }
+
+    function doSearch() {
+      const q = document.getElementById('searchField').value.trim();
+      if (q) {
+        alert('Searching for: ' + q + '\n(On Blogger, this queries /search?q=' + encodeURIComponent(q) + ')');
+        toggleSearch();
+      }
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        document.getElementById('searchModal').classList.remove('active');
+        document.getElementById('mobileDrawer').classList.remove('active');
+        document.getElementById('drawerOverlay').classList.remove('active');
+      }
+    });
+  </script>
+</body>
+</html>
